@@ -1,0 +1,27 @@
+{
+  "name": "بوابة النادي - برنامج التمارين",
+  "short_name": "بوابة النادي",
+  "description": "برنامج PPL + Upper Lower للتمارين والتغذية والراحة.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#060008",
+  "theme_color": "#060008",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

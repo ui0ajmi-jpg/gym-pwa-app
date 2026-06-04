@@ -795,15 +795,653 @@ body::after {
   color: #ffe2a2;
 }
 
+
+/* خلفية قابلة للتغيير: ضع صورتك مكان assets/background.jpg */
+body {
+  background:
+    linear-gradient(rgba(6,0,8,.82), rgba(6,0,8,.90)),
+    url("assets/background.jpg"),
+    radial-gradient(circle at 20% 0%, rgba(180,40,180,.35), transparent 32%),
+    radial-gradient(circle at 90% 90%, rgba(255,191,34,.18), transparent 35%),
+    linear-gradient(180deg, #07000b, #030006) !important;
+  background-size: cover, cover, auto, auto, auto !important;
+  background-position: center, center, center, center, center !important;
+  background-attachment: fixed, fixed, fixed, fixed, fixed !important;
+}
+
+.nutrition-hero {
+  max-width: 980px;
+  margin: 0 auto 22px;
+  padding: 22px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, rgba(255,191,34,.13), rgba(255,87,87,.08));
+  border: 1px solid rgba(255,191,34,.20);
+  text-align: center;
+}
+
+.nutrition-hero h2 {
+  color: var(--gold);
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.nutrition-hero p {
+  color: #f3dce2;
+  line-height: 1.9;
+  font-weight: 800;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.meal-card {
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  position: relative;
+  overflow: hidden;
+}
+
+.meal-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 5px;
+  background: linear-gradient(var(--gold), var(--red));
+}
+
+.meal-card h3 {
+  color: var(--gold);
+  font-size: 23px;
+  margin-bottom: 8px;
+}
+
+.meal-card p, .meal-card li {
+  color: #f3dce2;
+  line-height: 1.85;
+}
+
+.meal-card ul {
+  margin-top: 8px;
+  padding-right: 22px;
+}
+
+.track-box {
+  max-width: 980px;
+  margin: 20px auto 0;
+  padding: 20px;
+  border-radius: 24px;
+  background: rgba(255,255,255,.075);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.track-box h2 {
+  text-align: center;
+  color: var(--gold);
+  margin-bottom: 15px;
+}
+
+.check-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.10);
+  color: #f3dce2;
+  font-weight: 900;
+}
+
+.check-item input {
+  width: 20px;
+  height: 20px;
+  accent-color: #ffbf22;
+}
+
+.nutrition-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.nutrition-inputs label {
+  color: #ffe7b7;
+  font-weight: 900;
+  line-height: 1.9;
+}
+
+.nutrition-inputs input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.22);
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.calc-result {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 16px;
+  color: #d7ffe5;
+  background: rgba(105,255,155,.08);
+  border: 1px solid rgba(105,255,155,.18);
+  line-height: 1.9;
+  text-align: center;
+  font-weight: 900;
+}
+
+.nutri-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 900;
+  color: #1b0713;
+  background: linear-gradient(135deg, #69ff9b, var(--gold));
+}
+
+@media(max-width:850px) {
+  .nutrition-grid,
+  .check-list,
+  .nutrition-inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* نظام التغذية والتحضير اليومي */
+.nutrition-menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 18px 0 24px;
+}
+
+.nutrition-menu button {
+  min-height: 120px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 900;
+  font-size: 22px;
+  color: #1b0713;
+  background: linear-gradient(135deg, var(--gold), #ffcc9a, var(--red));
+  transition: .25s;
+}
+
+.nutrition-menu button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(255,191,34,.20);
+}
+
+.nutrition-panel {
+  display: none;
+  max-width: 980px;
+  margin: 18px auto;
+  padding: 22px;
+  border-radius: 26px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.nutrition-panel.active {
+  display: block;
+  animation: pageIn .35s ease;
+}
+
+.nutrition-panel h2 {
+  color: var(--gold);
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.nutrition-panel .goal {
+  color: #ffe7b7;
+  background: rgba(255,191,34,.09);
+  border: 1px solid rgba(255,191,34,.18);
+  padding: 14px;
+  border-radius: 18px;
+  text-align: center;
+  line-height: 1.8;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.food-options {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.food-option {
+  padding: 15px;
+  border-radius: 18px;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.10);
+  color: #f3dce2;
+  line-height: 1.8;
+}
+
+.food-option b {
+  color: #ffdf94;
+}
+
+.done-meal-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 15px;
+  border-radius: 999px;
+  border: none;
+  font-family: inherit;
+  font-weight: 900;
+  font-size: 18px;
+  cursor: pointer;
+  color: #07150c;
+  background: linear-gradient(135deg, #69ff9b, var(--gold));
+}
+
+.done-meal-btn.done {
+  background: linear-gradient(135deg, #2bff88, #c8ffd9);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.dash-card {
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  text-align: center;
+}
+
+.dash-card h3 {
+  color: var(--gold);
+  margin-bottom: 7px;
+}
+
+.dash-card p {
+  color: #f3dce2;
+  font-weight: 900;
+}
+
+.daily-check {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.daily-pill {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #f3dce2;
+  font-weight: 900;
+}
+
+.daily-pill.done {
+  background: rgba(105,255,155,.12);
+  border-color: rgba(105,255,155,.32);
+  color: #d7ffe5;
+}
+
+.weight-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.weight-row input {
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.22);
+  color: white;
+  font-size: 17px;
+  outline: none;
+}
+
+.weight-row button,
+.attendance-btn {
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 900;
+  color: #1b0713;
+  background: linear-gradient(135deg, var(--gold), var(--red));
+}
+
+.history-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  max-height: 360px;
+  overflow: auto;
+}
+
+.history-day {
+  padding: 13px;
+  border-radius: 16px;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.10);
+  color: #f3dce2;
+  line-height: 1.8;
+}
+
+.history-day.good {
+  border-color: rgba(105,255,155,.35);
+  background: rgba(105,255,155,.08);
+}
+
+.history-day.missed {
+  border-color: rgba(255,87,87,.35);
+  background: rgba(255,87,87,.08);
+}
+
+.small-muted {
+  color: #d9bfd4;
+  text-align: center;
+  line-height: 1.8;
+  margin-top: 10px;
+}
+
+@media(max-width:850px) {
+  .nutrition-menu,
+  .food-options,
+  .dashboard-grid,
+  .daily-check,
+  .weight-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* حاسبة الأكل والسعرات */
+.calculator-hero {
+  max-width: 980px;
+  margin: 0 auto 22px;
+  padding: 22px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, rgba(255,191,34,.13), rgba(255,87,87,.08));
+  border: 1px solid rgba(255,191,34,.20);
+  text-align: center;
+}
+
+.calculator-hero h2 {
+  color: var(--gold);
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.calculator-hero p {
+  color: #f3dce2;
+  line-height: 1.9;
+  font-weight: 800;
+}
+
+.calc-form-grid {
+  max-width: 980px;
+  margin: 18px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.calc-field {
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.calc-field label {
+  display: block;
+  color: #ffe7b7;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.calc-field input,
+.calc-field select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.22);
+  color: white;
+  font-size: 17px;
+  outline: none;
+  font-family: inherit;
+}
+
+.calc-actions {
+  max-width: 980px;
+  margin: 14px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.calc-main-btn {
+  padding: 15px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 900;
+  color: #1b0713;
+  background: linear-gradient(135deg, var(--gold), var(--red));
+}
+
+.calc-save-btn {
+  padding: 15px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 900;
+  color: #07150c;
+  background: linear-gradient(135deg, #69ff9b, var(--gold));
+}
+
+.calc-result-panel {
+  display: none;
+  max-width: 980px;
+  margin: 20px auto 0;
+  padding: 22px;
+  border-radius: 26px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.calc-result-panel.active {
+  display: block;
+  animation: pageIn .35s ease;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.result-card {
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.11);
+  text-align: center;
+}
+
+.result-card h3 {
+  color: var(--gold);
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.result-card p {
+  color: #f3dce2;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.goal-box {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255,191,34,.09);
+  border: 1px solid rgba(255,191,34,.18);
+}
+
+.goal-box h2 {
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.goal-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.goal-options button {
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.15);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 900;
+  color: white;
+  background: rgba(255,255,255,.10);
+}
+
+.goal-options button.active {
+  color: #1b0713;
+  background: linear-gradient(135deg, var(--gold), var(--red));
+}
+
+.profile-summary {
+  max-width: 980px;
+  margin: 14px auto 22px;
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(105,255,155,.08);
+  border: 1px solid rgba(105,255,155,.18);
+  color: #d7ffe5;
+  line-height: 1.9;
+  text-align: center;
+  font-weight: 900;
+}
+
+@media(max-width:850px) {
+  .calc-form-grid,
+  .calc-actions,
+  .result-grid,
+  .goal-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* تغذية V3: كل وجبة صفحة مستقلة */
+.nutrition-page-card {
+  max-width: 980px;
+  margin: 0 auto 18px;
+  padding: 24px;
+  border-radius: 28px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.nutrition-page-card h2 {
+  text-align: center;
+  color: var(--gold);
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.nutrition-back-mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 95px;
+  padding: 10px 15px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.08);
+  color: #ffe7b7;
+  font-family: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.nutrition-back-mini:hover {
+  background: rgba(255,191,34,.15);
+}
+
+.big-done-state {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  text-align: center;
+  color: #d7ffe5;
+  background: rgba(105,255,155,.08);
+  border: 1px solid rgba(105,255,155,.20);
+  font-weight: 900;
+}
+
+.food-menu-note {
+  max-width: 980px;
+  margin: 0 auto 18px;
+  text-align: center;
+  color: #f3dce2;
+  line-height: 1.8;
+  font-weight: 800;
+}
+
+@media(max-width:850px){
+  .nutrition-page-card h2 { font-size: 28px; }
+}
+
 </style>
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#060008">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="بوابة النادي">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
-
 </head>
 <body>
 
@@ -811,9 +1449,9 @@ body::after {
   <div class="gate-card">
     <div class="gate-inner">
       <div class="badge">GYM GATE</div>
-      <h1>بوابة النادي</h1>
+      <h1>MUSALLAM GYM PRO</h1>
       <p>برنامج تمارين PPL + Upper / Lower منظم حسب أيام الأسبوع مع صور وشرح لكل تمرين.</p>
-      <button class="primary-btn" id="enterBtn" type="button" onclick="enterGate(); return false;" ontouchstart="enterGate(); return false;">دخول البوابة</button>
+      <button class="primary-btn" id="enterBtn" type="button">دخول البوابة</button>
     </div>
   </div>
 </section>
@@ -834,10 +1472,11 @@ body::after {
 
   <section id="home" class="page active">
     <h1 class="page-title">اختر القسم</h1>
-    <p class="sub">ادخل على التمارين أو التغذية والنوم.</p>
+    <p class="sub">ادخل على التمارين أو التغذية أو احسب أكلك أو احسب أكلك.</p>
     <div class="grid">
       <button class="menu-btn" type="button" onclick="showPage('training')">التمارين<span>PPL + Upper / Lower</span></button>
       <button class="menu-btn" type="button" onclick="showPage('tips')">التغذية والنوم<span>نصائح للأكل والتعافي</span></button>
+      <button class="menu-btn" type="button" onclick="showPage('foodCalculator')">🧮 احسب أكلك<span>سعرات، بروتين، كارب، دهون</span></button>
     </div>
   </section>
 
@@ -879,14 +1518,236 @@ body::after {
 
   <section id="tips" class="page">
     <button class="back-btn" type="button" onclick="showPage('home')">رجوع</button>
-    <h1 class="page-title">التغذية والنوم</h1>
-    <div class="cards">
-      <div class="tip-card"><h3>قبل التمرين</h3><p>كارب سهل + بروتين خفيف قبل التمرين بساعة أو ساعتين. مثال: موز، كريم أوف رايس، رز، خبز، زبادي.</p></div>
-      <div class="tip-card"><h3>بعد التمرين</h3><p>وجبة فيها بروتين وكارب: دجاج ورز، بيض، لحم، تونة، بطاطس. الهدف تعويض الطاقة وبناء العضلات.</p></div>
-      <div class="tip-card"><h3>النوم</h3><p>نام 7 إلى 9 ساعات. التمرين يعطي إشارة، لكن التعافي والنوم هم اللي يكملون البناء.</p></div>
-      <div class="tip-card"><h3>التطور</h3><p>كل أسبوع حاول تزود عدة أو وزن بسيط أو تحسن التكنيك. لا تبدأ ثقيل قبل ما تتعلم الحركة.</p></div>
+    <h1 class="page-title">بوابة التغذية</h1>
+    <p class="sub">اختر الوجبة، اقرأ التعليمات، وبعد ما تخلص اضغط إنجاز. التطبيق يحفظ تحضيرك اليومي وسجل وزنك.</p>
+
+    <div class="nutrition-hero">
+      <h2>نظام اليوم</h2>
+      <p>ابدأ من يوم الأحد 7 يونيو 2026. كل يوم له متابعة مستقلة: فطور، غداء، عشاء، سناك، قبل التمرين، بعد التمرين، والمكملات.</p>
+    </div>
+
+    <div class="nutrition-menu">
+      <button onclick="showPage('mealBreakfast')">🍳 الفطور</button>
+      <button onclick="showPage('mealLunch')">🍗 الغداء</button>
+      <button onclick="showPage('mealDinner')">🍝 العشاء</button>
+      <button onclick="showPage('mealSnack')">🥜 السناك</button>
+      <button onclick="showPage('mealPreworkout')">⚡ قبل التمرين</button>
+      <button onclick="showPage('mealPostworkout')">🏋️ بعد التمرين</button>
+      <button onclick="showPage('mealSupplements')">💊 المكملات</button>
+      <button onclick="showPage('mealDashboard'); renderDashboard()">📊 التحضير والوزن</button>
+    </div>
+    <p class="food-menu-note">اختر الوجبة من الأعلى للدخول إلى صفحتها الخاصة.</p>
+  </section>
+
+
+
+  <section id="mealBreakfast" class="page">
+    <button class="nutrition-back-mini" onclick="showPage('tips')">رجوع</button>
+    <div class="nutrition-page-card">
+      <h2>🍳 الفطور</h2>
+      <div class="goal">الهدف: بداية قوية لليوم + بروتين وكارب يساعدك على التضخيم.</div>
+      <div class="food-options">
+        <div class="food-option"><b>الخيار الأساسي:</b><br>4 بيضات + 2 إلى 4 توست + موزة + كوب حليب.</div>
+        <div class="food-option"><b>بديل سريع:</b><br>شوفان أو كريم أوف رايس + حليب + موز + فول سوداني.</div>
+      </div>
+      <div class="food-option" style="margin-top:12px"><b>بعد الفطور:</b> فيتامين C + أوميغا 3.</div>
+      <button class="done-meal-btn" onclick="markDaily('breakfast'); setMealDoneText('breakfastDone')">إنجاز الفطور</button>
+      <div id="breakfastDone" class="big-done-state">اضغط إنجاز بعد ما تخلص الفطور.</div>
     </div>
   </section>
+
+  <section id="mealLunch" class="page">
+    <button class="nutrition-back-mini" onclick="showPage('tips')">رجوع</button>
+    <div class="nutrition-page-card">
+      <h2>🍗 الغداء</h2>
+      <div class="goal">الهدف: أكبر وجبة في اليوم، بروتين عالي وكارب كافي للطاقة.</div>
+      <div class="food-options">
+        <div class="food-option"><b>الأساسي:</b><br>رز + 200 إلى 250 جم دجاج أو لحم + سلطة.</div>
+        <div class="food-option"><b>بديل:</b><br>رز + تونة أو بيض + خضار.</div>
+      </div>
+      <button class="done-meal-btn" onclick="markDaily('lunch'); setMealDoneText('lunchDone')">إنجاز الغداء</button>
+      <div id="lunchDone" class="big-done-state">اضغط إنجاز بعد ما تخلص الغداء.</div>
+    </div>
+  </section>
+
+  <section id="mealDinner" class="page">
+    <button class="nutrition-back-mini" onclick="showPage('tips')">رجوع</button>
+    <div class="nutrition-page-card">
+      <h2>🍝 العشاء</h2>
+      <div class="goal">الهدف: تعويض السعرات والبروتين قبل نهاية اليوم.</div>
+      <div class="food-options">
+        <div class="food-option"><b>مقترح:</b><br>مكرونة بالدجاج أو اللحم.</div>
+        <div class="food-option"><b>بديل:</b><br>برجر دجاج منزلي + بطاطس + سلطة.</div>
+        <div class="food-option"><b>بديل خفيف:</b><br>تونة + خبز + زبادي.</div>
+      </div>
+      <button class="done-meal-btn" onclick="markDaily('dinner'); setMealDoneText('dinnerDone')">إنجاز العشاء</button>
+      <div id="dinnerDone" class="big-done-state">اضغط إنجاز بعد ما تخلص العشاء.</div>
+    </div>
+  </section>
+
+  <section id="mealSnack" class="page">
+    <button class="nutrition-back-mini" onclick="showPage('tips')">رجوع</button>
+    <div class="nutrition-page-card">
+      <h2>🥜 السناك</h2>
+      <div class="goal">الهدف: ترفع السعرات بسهولة بين الوجبات بدون ثقل.</div>
+      <div class="food-options">
+        <div class="food-option">فول سوداني + موزة.</div>
+        <div class="food-option">زبادي + تمر.</div>
+        <div class="food-option">حليب + توست بزبدة فول سوداني.</div>
+        <div class="food-option">مكسرات + فاكهة.</div>
+      </div>
+      <button class="done-meal-btn" onclick="markDaily('snack'); setMealDoneText('snackDone')">إنجاز السناك</button>
+      <div id="snackDone" class="big-done-state">اضغط إنجاز بعد ما تخلص السناك.</div>
+    </div>
+  </section>
+
+  <section id="mealPreworkout" class="page">
+    <button class="nutrition-back-mini" onclick="showPage('tips')">رجوع</button>
+    <div class="nutrition-page-card">
+      <h2>⚡ قبل التمرين</h2>
+      <div class="goal">الهدف: طاقة للتمرين بدون ثقل على المعدة.</div>
+      <div class="food-options">
+        <div class="food-option"><b>وجبتك:</b><br>كريم أوف رايس + موز أو مصدر طاقة سريع.</div>
+        <div class="food-option"><b>المكملات:</b><br>سكوب كرياتين + سكوب ABA طاقة حسب استخدامك.</div>
+      </div>
+      <button class="done-meal-btn" onclick="markDaily('preworkout'); setMealDoneText('preDone')">إنجاز قبل التمرين</button>
+      <div id="preDone" class="big-done-state">اضغط إنجاز بعد ما تخلص قبل التمرين.</div>
+    </div>
+  </section>
+
+  <section id="mealPostworkout" class="page">
+    <button class="nutrition-back-mini" onclick="showPage('tips')">رجوع</button>
+    <div class="nutrition-page-card">
+      <h2>🏋️ بعد التمرين</h2>
+      <div class="goal">الهدف: تعويض العضلات بسرعة بعد التمرين.</div>
+      <div class="food-options">
+        <div class="food-option"><b>بعد التمرين مباشرة:</b><br>سكوب بروتين + ماء.</div>
+        <div class="food-option"><b>بعدها بوقت مناسب:</b><br>وجبة كارب وبروتين إذا تقدر.</div>
+      </div>
+      <button class="done-meal-btn" onclick="markDaily('postworkout'); setMealDoneText('postDone')">إنجاز بعد التمرين</button>
+      <div id="postDone" class="big-done-state">اضغط إنجاز بعد ما تخلص بعد التمرين.</div>
+    </div>
+  </section>
+
+  <section id="mealSupplements" class="page">
+    <button class="nutrition-back-mini" onclick="showPage('tips')">رجوع</button>
+    <div class="nutrition-page-card">
+      <h2>💊 المكملات</h2>
+      <div class="goal">تنظيم المكملات حسب روتينك اليومي.</div>
+      <div class="food-options">
+        <div class="food-option"><b>بعد الفطور:</b><br>فيتامين C + أوميغا 3.</div>
+        <div class="food-option"><b>قبل التمرين:</b><br>كرياتين + ABA طاقة.</div>
+        <div class="food-option"><b>بعد التمرين:</b><br>سكوب بروتين.</div>
+        <div class="food-option"><b>قبل النوم:</b><br>مغنيسيوم + زنك.</div>
+      </div>
+      <button class="done-meal-btn" onclick="markDaily('supplements'); setMealDoneText('suppDone')">إنجاز المكملات</button>
+      <div id="suppDone" class="big-done-state">اضغط إنجاز بعد ما تلتزم بالمكملات.</div>
+    </div>
+  </section>
+
+  <section id="mealDashboard" class="page">
+    <button class="nutrition-back-mini" onclick="showPage('tips')">رجوع</button>
+    <div class="nutrition-page-card">
+      <h2>📊 التحضير والوزن</h2>
+      <div class="dashboard-grid">
+        <div class="dash-card"><h3>اليوم</h3><p id="dashDate">--</p></div>
+        <div class="dash-card"><h3>إنجاز اليوم</h3><p id="dashScore">0 / 7</p></div>
+        <div class="dash-card"><h3>حالة اليوم</h3><p id="dashStatus">لم يبدأ</p></div>
+      </div>
+
+      <div class="daily-check" id="dailyCheckList"></div>
+
+      <div class="weight-row">
+        <input id="dailyWeight" type="number" step="0.1" placeholder="اكتب وزنك اليومي مثال: 66.5">
+        <button onclick="saveDailyWeight()">حفظ الوزن</button>
+      </div>
+
+      <div class="calc-result" id="weightMsg">في نهاية اليوم، بعد ما تخلص وجباتك، أدخل وزنك هنا.</div>
+
+      <div class="track-box">
+        <h2>سجل الأيام</h2>
+        <div class="history-list" id="historyList"></div>
+      </div>
+
+      <button class="attendance-btn" style="width:100%; margin-top:14px" onclick="resetAttendance()">تصفير السجل</button>
+      <p class="small-muted">إذا عدّى يوم من تاريخ البداية بدون إنجاز كافٍ، يظهر في السجل كأنه يوم مسحوب.</p>
+    </div>
+  </section>
+
+  <section id="foodCalculator" class="page">
+    <button class="back-btn" type="button" onclick="showPage('home')">رجوع</button>
+    <h1 class="page-title">🧮 احسب أكلك</h1>
+
+    <div class="calculator-hero">
+      <h2>حاسبة السعرات والبروتين</h2>
+      <p>أدخل وزنك، عمرك، جنسك، وعدد أيام تمرينك. بعدها يعطيك التطبيق سعرات المحافظة والبروتين والماء، ثم تختار هدفك: تضخيم أو تنشيف أو تثبيت.</p>
+    </div>
+
+    <div id="profileSummary" class="profile-summary">لا توجد بيانات محفوظة حالياً. احسب احتياجك ثم اضغط حفظ.</div>
+
+    <div class="calc-form-grid">
+      <div class="calc-field">
+        <label>⚖️ الوزن بالكيلو</label>
+        <input id="calcWeight" type="number" step="0.1" placeholder="مثال: 66">
+      </div>
+
+      <div class="calc-field">
+        <label>🎂 العمر</label>
+        <input id="calcAge" type="number" placeholder="مثال: 20">
+      </div>
+
+      <div class="calc-field">
+        <label>🚹 الجنس</label>
+        <select id="calcGender">
+          <option value="male">ذكر</option>
+          <option value="female">أنثى</option>
+        </select>
+      </div>
+
+      <div class="calc-field">
+        <label>🏋️ أيام التمرين بالأسبوع</label>
+        <select id="calcTraining">
+          <option value="0">لا أتمرن</option>
+          <option value="2">1 - 2 أيام</option>
+          <option value="4">3 - 4 أيام</option>
+          <option value="5">5 - 6 أيام</option>
+          <option value="7">7 أيام</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-actions">
+      <button class="calc-main-btn" onclick="calculateFoodNeeds()">احسب احتياجي</button>
+      <button class="calc-save-btn" onclick="saveFoodProfile()">احفظ في ملفي الشخصي</button>
+    </div>
+
+    <div id="calcResultPanel" class="calc-result-panel">
+      <div class="result-grid">
+        <div class="result-card"><h3>🔥 سعرات المحافظة</h3><p id="maintCalories">--</p></div>
+        <div class="result-card"><h3>🥩 البروتين</h3><p id="proteinNeed">--</p></div>
+        <div class="result-card"><h3>💧 الماء</h3><p id="waterNeed">--</p></div>
+        <div class="result-card"><h3>📌 الحالة</h3><p id="bodyStatus">--</p></div>
+      </div>
+
+      <div class="goal-box">
+        <h2>اختر هدفك</h2>
+        <div class="goal-options">
+          <button id="goalBulk" onclick="chooseGoal('bulk')">تضخيم</button>
+          <button id="goalCut" onclick="chooseGoal('cut')">تنشيف</button>
+          <button id="goalMaintain" onclick="chooseGoal('maintain')">تثبيت</button>
+        </div>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-card"><h3>🎯 سعرات الهدف</h3><p id="goalCalories">--</p></div>
+        <div class="result-card"><h3>🥩 بروتين الهدف</h3><p id="goalProtein">--</p></div>
+        <div class="result-card"><h3>🍚 الكارب</h3><p id="carbNeed">--</p></div>
+        <div class="result-card"><h3>🥑 الدهون</h3><p id="fatNeed">--</p></div>
+        <div class="result-card"><h3>📝 التوجيه</h3><p id="goalAdvice">اختر الهدف</p></div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <script>
@@ -1208,72 +2069,375 @@ function showRest() {
   showPage("viewer");
 }
 </script>
-
 <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function() {
-    navigator.serviceWorker.register("./sw.js").catch(function(error) {
-      console.log("Service Worker registration failed:", error);
+
+function saveNutritionChecks() {
+  const checks = {};
+  document.querySelectorAll("[data-nutri]").forEach(function(input) {
+    checks[input.dataset.nutri] = input.checked;
+  });
+  localStorage.setItem("nutritionChecks", JSON.stringify(checks));
+  const done = Object.values(checks).filter(Boolean).length;
+  const box = document.getElementById("nutritionSaved");
+  if (box) box.textContent = "تم الحفظ: أنجزت " + done + " من 6 عناصر اليوم.";
+}
+
+function loadNutritionChecks() {
+  try {
+    const checks = JSON.parse(localStorage.getItem("nutritionChecks")) || {};
+    document.querySelectorAll("[data-nutri]").forEach(function(input) {
+      input.checked = !!checks[input.dataset.nutri];
     });
+  } catch(e) {}
+}
+
+function calcNutrition() {
+  const weight = Number(document.getElementById("bodyWeight").value);
+  const protein = document.getElementById("proteinGoal");
+  const water = document.getElementById("waterGoal");
+  const text = document.getElementById("calcText");
+
+  if (!weight || weight <= 0) {
+    text.textContent = "اكتب وزنك بشكل صحيح.";
+    return;
+  }
+
+  const p = Math.round(weight * 1.8);
+  const w = Math.round(weight * 35);
+
+  protein.value = p + " جم بروتين";
+  water.value = w + " مل ماء تقريباً";
+  text.textContent = "هدفك التقريبي: " + p + " جم بروتين يومياً، وماء حوالي " + w + " مل. عدّل حسب نشاطك وجسمك.";
+}
+
+document.addEventListener("DOMContentLoaded", loadNutritionChecks);
+
+</script>
+<script>
+
+const PROGRAM_START_DATE = "2026-06-07";
+const DAILY_KEYS = [
+  ["breakfast", "الفطور"],
+  ["lunch", "الغداء"],
+  ["dinner", "العشاء"],
+  ["snack", "السناك"],
+  ["preworkout", "قبل التمرين"],
+  ["postworkout", "بعد التمرين"],
+  ["supplements", "المكملات"]
+];
+
+function todayKey() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,"0");
+  const day = String(d.getDate()).padStart(2,"0");
+  return y + "-" + m + "-" + day;
+}
+
+function dateToKey(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,"0");
+  const day = String(d.getDate()).padStart(2,"0");
+  return y + "-" + m + "-" + day;
+}
+
+function getAttendance() {
+  try {
+    return JSON.parse(localStorage.getItem("myGymAttendance")) || {};
+  } catch(e) {
+    return {};
+  }
+}
+
+function saveAttendance(data) {
+  localStorage.setItem("myGymAttendance", JSON.stringify(data));
+}
+
+function ensureTodayRecord() {
+  const data = getAttendance();
+  const t = todayKey();
+  if (!data[t]) {
+    data[t] = { checks:{}, weight:"", opened:true };
+    saveAttendance(data);
+  }
+  return data;
+}
+
+function markDaily(key) {
+  const data = ensureTodayRecord();
+  const t = todayKey();
+  data[t].checks[key] = true;
+  data[t].opened = true;
+  saveAttendance(data);
+  updateNutritionButtons();
+  renderDashboard();
+}
+
+function showNutritionPanel(id) {
+  document.querySelectorAll(".nutrition-panel").forEach(function(panel) {
+    panel.classList.remove("active");
+  });
+  const panel = document.getElementById("nutri-" + id);
+  if (panel) panel.classList.add("active");
+  ensureTodayRecord();
+  updateNutritionButtons();
+  if (id === "dashboard") renderDashboard();
+}
+
+function updateNutritionButtons() {
+  const data = ensureTodayRecord();
+  const today = data[todayKey()] || {checks:{}};
+  document.querySelectorAll(".done-meal-btn").forEach(function(btn) {
+    const match = btn.getAttribute("onclick") || "";
+    const keyMatch = match.match(/markDaily\('([^']+)'\)/);
+    if (keyMatch && today.checks[keyMatch[1]]) {
+      btn.classList.add("done");
+      btn.textContent = "✅ تم الإنجاز";
+    }
   });
 }
-</script>
 
-
-<script>
-/* إصلاح زر الدخول للجوال والآيباد */
-function forceEnterGateMobileFix() {
-  var gate = document.getElementById("gate");
-  var app = document.getElementById("app");
-
-  if (!gate || !app) return;
-
-  gate.style.display = "none";
-  gate.classList.add("hidden");
-
-  app.style.display = "block";
-  app.classList.remove("hidden");
-
-  if (typeof showPage === "function") {
-    showPage("home");
-  } else {
-    document.querySelectorAll(".page").forEach(function(page) {
-      page.classList.remove("active");
-    });
-    var home = document.getElementById("home");
-    if (home) home.classList.add("active");
+function saveDailyWeight() {
+  const data = ensureTodayRecord();
+  const t = todayKey();
+  const weight = document.getElementById("dailyWeight").value;
+  if (!weight) {
+    document.getElementById("weightMsg").textContent = "اكتب وزنك أولاً.";
+    return;
   }
-
-  setTimeout(function() {
-    window.scrollTo(0, 0);
-  }, 50);
+  data[t].weight = weight;
+  saveAttendance(data);
+  document.getElementById("weightMsg").textContent = "تم حفظ وزن اليوم: " + weight + " كجم.";
+  renderDashboard();
 }
 
-window.enterGate = forceEnterGateMobileFix;
+function scoreDay(record) {
+  if (!record || !record.checks) return 0;
+  return DAILY_KEYS.filter(function(item) { return record.checks[item[0]]; }).length;
+}
+
+function renderDashboard() {
+  const data = ensureTodayRecord();
+  const t = todayKey();
+  const record = data[t] || {checks:{}};
+  const score = scoreDay(record);
+
+  const dashDate = document.getElementById("dashDate");
+  const dashScore = document.getElementById("dashScore");
+  const dashStatus = document.getElementById("dashStatus");
+  if (dashDate) dashDate.textContent = t;
+  if (dashScore) dashScore.textContent = score + " / " + DAILY_KEYS.length;
+  if (dashStatus) dashStatus.textContent = score >= 5 ? "ممتاز ✅" : score >= 3 ? "متوسط ⚠️" : "ناقص ❌";
+
+  const checkList = document.getElementById("dailyCheckList");
+  if (checkList) {
+    checkList.innerHTML = DAILY_KEYS.map(function(item) {
+      const done = record.checks && record.checks[item[0]];
+      return `<div class="daily-pill ${done ? "done" : ""}">${done ? "✅" : "⬜"} ${item[1]}</div>`;
+    }).join("");
+  }
+
+  const weightInput = document.getElementById("dailyWeight");
+  if (weightInput && record.weight) weightInput.value = record.weight;
+
+  renderHistory();
+}
+
+function renderHistory() {
+  const list = document.getElementById("historyList");
+  if (!list) return;
+
+  const data = getAttendance();
+  const start = new Date(PROGRAM_START_DATE + "T00:00:00");
+  const end = new Date();
+  const rows = [];
+
+  for (let d = new Date(start); d <= end; d.setDate(d.getDate()+1)) {
+    const key = dateToKey(d);
+    const record = data[key];
+    const score = scoreDay(record);
+    const isToday = key === todayKey();
+    const cls = score >= 5 ? "good" : (!isToday && key < todayKey() ? "missed" : "");
+    const status = score >= 5 ? "ملتزم ✅" : (!isToday && key < todayKey() ? "مسحوب ❌" : "قيد اليوم");
+    const weight = record && record.weight ? record.weight + " كجم" : "بدون وزن";
+    rows.unshift(`<div class="history-day ${cls}">
+      <b>${key}</b><br>
+      الإنجاز: ${score} / ${DAILY_KEYS.length} — ${status}<br>
+      الوزن: ${weight}
+    </div>`);
+  }
+
+  list.innerHTML = rows.join("");
+}
+
+function resetAttendance() {
+  if (confirm("هل تريد تصفير سجل التحضير والوزن؟")) {
+    localStorage.removeItem("myGymAttendance");
+    ensureTodayRecord();
+    renderDashboard();
+    updateNutritionButtons();
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function() {
-  var btn = document.getElementById("enterBtn");
-  if (btn) {
-    btn.onclick = function(e) {
-      if (e) e.preventDefault();
-      forceEnterGateMobileFix();
-      return false;
-    };
-
-    btn.addEventListener("touchend", function(e) {
-      if (e) e.preventDefault();
-      forceEnterGateMobileFix();
-      return false;
-    }, { passive: false });
-
-    btn.addEventListener("click", function(e) {
-      if (e) e.preventDefault();
-      forceEnterGateMobileFix();
-      return false;
-    });
-  }
+  ensureTodayRecord();
+  updateNutritionButtons();
 });
-</script>
 
+</script>
+<script>
+
+let foodCalcState = null;
+
+function calculateFoodNeeds() {
+  const weight = Number(document.getElementById("calcWeight").value);
+  const age = Number(document.getElementById("calcAge").value);
+  const gender = document.getElementById("calcGender").value;
+  const trainingDays = Number(document.getElementById("calcTraining").value);
+
+  if (!weight || weight <= 0 || !age || age <= 0) {
+    alert("اكتب الوزن والعمر بشكل صحيح.");
+    return;
+  }
+
+  let basePerKg = gender === "male" ? 31 : 28;
+  let activityAdd = 0;
+
+  if (trainingDays === 0) activityAdd = 0;
+  else if (trainingDays <= 2) activityAdd = 2;
+  else if (trainingDays <= 4) activityAdd = 4;
+  else if (trainingDays <= 6) activityAdd = 6;
+  else activityAdd = 7;
+
+  let maintenance = Math.round(weight * (basePerKg + activityAdd));
+
+  // Age adjustment: simple, avoid overcomplication.
+  if (age >= 35) maintenance -= 100;
+  if (age <= 21) maintenance += 80;
+
+  const protein = Math.round(weight * 2);
+  const waterMl = Math.round(weight * 35);
+  const status = getSimpleBodyStatus(weight);
+
+  foodCalcState = {
+    weight,
+    age,
+    gender,
+    trainingDays,
+    maintenance,
+    protein,
+    waterMl,
+    goal: null,
+    goalCalories: maintenance,
+    carbs: null,
+    fats: null,
+    advice: "اختر هدفك"
+  };
+
+  document.getElementById("calcResultPanel").classList.add("active");
+  document.getElementById("maintCalories").textContent = maintenance + " سعرة";
+  document.getElementById("proteinNeed").textContent = protein + " جم";
+  document.getElementById("waterNeed").textContent = (waterMl / 1000).toFixed(1) + " لتر";
+  document.getElementById("bodyStatus").textContent = status;
+
+  chooseGoal("maintain");
+}
+
+function getSimpleBodyStatus(weight) {
+  if (weight < 55) return "وزن منخفض";
+  if (weight <= 80) return "وزن مناسب للتطوير";
+  if (weight <= 95) return "وزن مرتفع نسبياً";
+  return "وزن عالٍ";
+}
+
+function chooseGoal(goal) {
+  if (!foodCalcState) {
+    calculateFoodNeeds();
+    if (!foodCalcState) return;
+  }
+
+  document.querySelectorAll(".goal-options button").forEach(btn => btn.classList.remove("active"));
+
+  let calories = foodCalcState.maintenance;
+  let advice = "";
+
+  if (goal === "bulk") {
+    calories = foodCalcState.maintenance + 300;
+    advice = "تضخيم: إذا لم يزد وزنك خلال أسبوعين، زد 150-200 سعرة.";
+    document.getElementById("goalBulk").classList.add("active");
+  } else if (goal === "cut") {
+    calories = foodCalcState.maintenance - 400;
+    advice = "تنشيف: حافظ على البروتين ولا تنقص السعرات بقوة.";
+    document.getElementById("goalCut").classList.add("active");
+  } else {
+    calories = foodCalcState.maintenance;
+    advice = "تثبيت: مناسب للحفاظ على وزنك وتحسين الأداء.";
+    document.getElementById("goalMaintain").classList.add("active");
+  }
+
+  const proteinCalories = foodCalcState.protein * 4;
+  const fats = Math.round(foodCalcState.weight * 0.9);
+  const fatCalories = fats * 9;
+  const carbs = Math.max(0, Math.round((calories - proteinCalories - fatCalories) / 4));
+
+  foodCalcState.goal = goal;
+  foodCalcState.goalCalories = calories;
+  foodCalcState.carbs = carbs;
+  foodCalcState.fats = fats;
+  foodCalcState.advice = advice;
+
+  document.getElementById("goalCalories").textContent = calories + " سعرة";
+  const gp = document.getElementById("goalProtein"); if (gp) gp.textContent = foodCalcState.protein + " جم";
+  document.getElementById("carbNeed").textContent = carbs + " جم";
+  document.getElementById("fatNeed").textContent = fats + " جم";
+  document.getElementById("goalAdvice").textContent = advice;
+}
+
+function saveFoodProfile() {
+  if (!foodCalcState) {
+    alert("احسب احتياجك أولاً.");
+    return;
+  }
+
+  localStorage.setItem("foodProfile", JSON.stringify(foodCalcState));
+  updateProfileSummary();
+  alert("تم حفظ بيانات أكلك في ملفك الشخصي.");
+}
+
+function updateProfileSummary() {
+  const box = document.getElementById("profileSummary");
+  if (!box) return;
+
+  try {
+    const saved = JSON.parse(localStorage.getItem("foodProfile"));
+    if (!saved) {
+      box.textContent = "لا توجد بيانات محفوظة حالياً. احسب احتياجك ثم اضغط حفظ.";
+      return;
+    }
+
+    const goalName = saved.goal === "bulk" ? "تضخيم" : saved.goal === "cut" ? "تنشيف" : "تثبيت";
+    box.innerHTML = `
+      آخر بيانات محفوظة:
+      ⚖️ ${saved.weight} كجم |
+      🎯 ${goalName} |
+      🔥 ${saved.goalCalories} سعرة |
+      🥩 ${saved.protein} جم بروتين
+    `;
+  } catch(e) {
+    box.textContent = "لا توجد بيانات محفوظة حالياً.";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", updateProfileSummary);
+
+</script>
+<script>
+
+function setMealDoneText(id) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = "✅ تم تسجيل الإنجاز لهذا اليوم";
+}
+
+</script>
 </body>
 </html>

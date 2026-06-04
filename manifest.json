@@ -1,7 +1,7 @@
 {
-  "name": "بوابة النادي - برنامج التمارين",
-  "short_name": "بوابة النادي",
-  "description": "برنامج PPL + Upper Lower للتمارين والتغذية والراحة.",
+  "name": "MUSALLAM GYM PRO",
+  "short_name": "Musallam Gym",
+  "description": "تمارين وتغذية وحاسبة سعرات وبروتين.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
